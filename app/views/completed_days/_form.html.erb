@@ -1,0 +1,26 @@
+<%= form_for @completed_day do |f| %>
+ 
+  <% if @completed_day.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@completed_day.errors.count, "error") %> prohibited
+        this submission from being saved:
+      </h2>
+      <ul>
+        <% @completed_day.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+  <p>
+    <%= f.label :date %><br>
+    <%= f.text_field :date %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+ 
+<% end %>
