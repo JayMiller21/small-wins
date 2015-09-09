@@ -14,13 +14,13 @@
     </div>
   <% end %>
  
-  <p>
+  <div class="form-group">
     <%= f.label :date %><br>
-    <%= f.text_field :date %>
-  </p>
+    <%= f.text_field :date, class: "form-control" %>
+  </div>
  
-  <p>
-    <%= f.submit %>
-  </p>
+  <div class="form-group">
+    <%= f.submit "Submit", class: "btn btn-default" %>
+  </div>
  
 <% end %>
