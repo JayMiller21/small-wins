@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   
+  get 'chains/index'
+
+  resources :chains 
   resources :completed_days
   root 'completed_days#index'
 
