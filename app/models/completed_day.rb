@@ -13,9 +13,11 @@ class CompletedDay < ActiveRecord::Base
         @chains = chains.map { |chain| 
           Chain.create(:start_date => chain[0].date, :end_date => chain[-1].date, :current => FALSE)
         }
+
+        current_chain = Chain.all.max_by {|chain| chain.start_date}
+        current_chain.current = TRUE
+        current_chain.save
         # TODO:
-        # assign current chain
-        # apply this method on deleting a completed day as well
         # try sidekiq for async 
   end
 end
