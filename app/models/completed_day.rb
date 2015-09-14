@@ -1,5 +1,7 @@
 class CompletedDay < ActiveRecord::Base
   belongs_to :chain
+  #TODO
+  #don't accept duplicates
 
   def self.update_chains
     completed_days = CompletedDay.all.sort_by(&:date)

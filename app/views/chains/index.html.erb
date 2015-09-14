@@ -1,2 +1,19 @@
-<h1>Chains#index</h1>
-<p>Find me in app/views/chains/index.html.erb</p>
+<h1>Your Chains</h1>
+
+<%= link_to 'Log Completed Days', new_completed_day_path %>
+<table>
+  <tr>
+    <th>Chain Number</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+  </tr>
+ 
+  <% @chains.each do |chain| %>
+    <tr>
+      <td><%= chain.id %></td>
+      <td><%= chain.start_date %></td>
+      <td><%= chain.end_date %></td>
+    </tr>
+  <% end %>
+</table>
+

@@ -10,11 +10,9 @@ class CompletedDaysController < ApplicationController
 
   def create
     @completed_day = CompletedDay.new(completed_day_params)
-
     if @completed_day.save
-      redirect_to action: "index"
-      
       CompletedDay.update_chains
+      redirect_to chains_path
     else
       render 'new'
     end
@@ -24,7 +22,6 @@ class CompletedDaysController < ApplicationController
     @completed_day = CompletedDay.find(params[:id])
     @completed_day.destroy
     CompletedDay.update_chains
-   
     redirect_to action: "index"
   end
 
