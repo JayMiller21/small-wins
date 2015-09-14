@@ -23,6 +23,7 @@ class CompletedDaysController < ApplicationController
   def destroy
     @completed_day = CompletedDay.find(params[:id])
     @completed_day.destroy
+    CompletedDay.update_chains
    
     redirect_to action: "index"
   end
