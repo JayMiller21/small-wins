@@ -7,5 +7,6 @@ class ChainsController < ApplicationController
 
     @current_chain = Chain.where(current: TRUE)[0]
     @current_chain_dates = (@current_chain.start_date..@current_chain.end_date).map{ |date| date.strftime("%b %d") }
+    @upcoming_dates = (@current_chain.end_date+1..@current_chain.end_date+5).map{ |date| date.strftime("%b %d") }
   end
 end

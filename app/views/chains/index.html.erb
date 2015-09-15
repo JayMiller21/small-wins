@@ -6,8 +6,21 @@
 
 <div>
   <table>
-    <tr><% @current_chain_dates.each do |date| %>
-      <td><%= date %></td>
+
+    <tr>
+      <% @current_chain_dates.each do |date| %>
+        <td bgcolor="red"> x </td>
+      <% end %>
+      <% @upcoming_dates.each do |date| %>
+        <td bgcolor="#E0E0E0"> o </td>
+      <% end %>
+    </tr>
+    <tr>
+      <% @current_chain_dates.each do |date| %>
+        <td><%= date %></td>
+      <% end %>
+      <% @upcoming_dates.each do |date| %>
+        <td><%= date %></td>
       <% end %>
     </tr>
   </table>
