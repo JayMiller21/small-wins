@@ -5,6 +5,7 @@ class CompletedDaysController < ApplicationController
   end
 
   def new
+    @completed_days = CompletedDay.all.sort_by(&:date)
     @completed_day = CompletedDay.new
   end
 
@@ -22,7 +23,7 @@ class CompletedDaysController < ApplicationController
     @completed_day = CompletedDay.find(params[:id])
     @completed_day.destroy
     CompletedDay.update_chains
-    redirect_to action: "index"
+    redirect_to chains_path
   end
 
   private
