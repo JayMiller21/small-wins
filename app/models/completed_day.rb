@@ -1,7 +1,12 @@
 class CompletedDay < ActiveRecord::Base
   belongs_to :chain
-  #TODO
-  #don't accept duplicates
+  
+  validates :date, format: { with: /\d{4}-\d{2}-\d{2}/, :message => "Date must be in the following format: yyyy-mm-dd" }
+
+  validates :date, presence: { message: "The date field may not be empty" }
+
+  validates :date, uniqueness: { message: "The date you entered has already been logged" }
+
 
   def self.update_chains
     completed_days = CompletedDay.all.sort_by(&:date)

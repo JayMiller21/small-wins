@@ -2,10 +2,9 @@
  
   <% if @completed_day.errors.any? %>
     <div id="error_explanation">
-      <h2>
-        <%= pluralize(@completed_day.errors.count, "error") %> prohibited
-        this submission from being saved:
-      </h2>
+      <h3>
+        <%= pluralize(@completed_day.errors.count, "error") %> prohibited this date from being logged:
+      </h3>
       <ul>
         <% @completed_day.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
@@ -15,7 +14,7 @@
   <% end %>
  
   <div class="form-group">
-    <%= f.label :date %><br>
+    <%= f.label "Date (yyyy-mm-dd):" %><br>
     <%= f.text_field :date, class: "form-control" %>
   </div>
  

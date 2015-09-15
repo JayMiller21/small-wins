@@ -10,6 +10,7 @@ class CompletedDaysController < ApplicationController
   end
 
   def create
+    @completed_days = CompletedDay.all.sort_by(&:date)
     @completed_day = CompletedDay.new(completed_day_params)
     if @completed_day.save
       CompletedDay.update_chains
