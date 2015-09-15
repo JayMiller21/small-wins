@@ -1,20 +1,16 @@
 <h1>Your Current Chain</h1>
 
-<%= link_to 'Log Completed Days', new_completed_day_path %>
-<table>
-  <tr>
-    <th>Chain Number</th>
-    <th>Start Date</th>
-    <th>End Date</th>
-  </tr>
- 
-  <% @chains.each do |chain| %>
-    <tr>
-      <td><%= chain.id %></td>
-      <td><%= chain.start_date %></td>
-      <td><%= chain.end_date %></td>
-    </tr>
-  <% end %>
-</table>
+<div>
+  <%= link_to 'Log Completed Days', new_completed_day_path %>
+</div>
 
-<p>Your previous longest chain was <%= @previous_longest_chain_length %> days long.</p>
+<div>
+  <table>
+    <tr><% @current_chain_dates.each do |date| %>
+      <td><%= date %></td>
+      <% end %>
+    </tr>
+  </table>
+</div>
+
+<div><p>Your previous longest chain was <%= @previous_longest_chain_length %> days long.</p></div>
