@@ -1,4 +1,4 @@
-<h1>Your Chains</h1>
+<h1>Your Current Chain</h1>
 
 <%= link_to 'Log Completed Days', new_completed_day_path %>
 <table>
@@ -17,3 +17,4 @@
   <% end %>
 </table>
 
+<p>Your previous longest chain was <%= @previous_longest_chain_length %> days long.</p>
