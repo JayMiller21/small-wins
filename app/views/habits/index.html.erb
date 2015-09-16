@@ -5,30 +5,5 @@
 </div>
 
 <div>
-  <% @habits.each do |habit| %>
-    
-    <h3><%= habit.name %></h3>
-
-    <table>
-      <tr>
-        <% habit.current_chain_dates.each do |date| %>
-          <td bgcolor="red"> x </td>
-        <% end %>
-        <% habit.upcoming_dates.each do |date| %>
-          <td bgcolor="#E0E0E0"> o </td>
-        <% end %>
-      </tr>
-      <tr>
-        <% habit.current_chain_dates.each do |date| %>
-          <td><%= date %></td>
-        <% end %>
-        <% habit.upcoming_dates.each do |date| %>
-          <td><%= date %></td>
-        <% end %>
-      </tr>
-    </table>
-
-    <p>Your previous longest chain was <%= habit.previous_longest_chain_length %> days long.</p>
-
-  <% end %>
+  <%= render partial: "habit", collection: @habits %>
 </div>
