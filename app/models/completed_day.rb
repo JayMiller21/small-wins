@@ -1,5 +1,6 @@
 class CompletedDay < ActiveRecord::Base
   belongs_to :chain
+  belongs_to :habit
   
   validates :date, format: { with: /\d{4}-\d{2}-\d{2}/, :message => "must be in the following format: yyyy-mm-dd" }
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150914002723) do
+ActiveRecord::Schema.define(version: 20150915232603) do
 
   create_table "chains", force: true do |t|
     t.datetime "created_at"
@@ -19,12 +19,20 @@ ActiveRecord::Schema.define(version: 20150914002723) do
     t.date     "start_date"
     t.date     "end_date"
     t.boolean  "current"
+    t.integer  "habits_id"
   end
 
   create_table "completed_days", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.date     "date"
+    t.integer  "habits_id"
+  end
+
+  create_table "habits", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
