@@ -1,2 +1,22 @@
-<h1>Habits#new</h1>
-<p>Find me in app/views/habits/new.html.erb</p>
+<h1>Track a New Habit</h1>
+
+<%= render 'form' %>
+ 
+<%= link_to 'Back to My Habit Chains', habits_path, :class => "btn btn-link" %>
+
+<h1>Remove Habits</h1>
+
+<table>
+  <tr>
+    <th>Habits</th>
+  </tr>
+ 
+  <% @habits.each do |habit| %>
+    <tr>
+      <td><%= habit.name %></td>
+      <td><%= link_to 'Delete', habit_path(habit),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
