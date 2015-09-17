@@ -1,2 +1,49 @@
-<h1>Habits#edit</h1>
-<p>Find me in app/views/habits/edit.html.erb</p>
+<h1>Your Current <%= @habit.name %> Chain</h1>
+
+<div>
+  <table>
+
+    <tr>
+      <% @habit.current_chain_dates.each do |date| %>
+        <td bgcolor="red"> x </td>
+      <% end %>
+      <% @habit.upcoming_dates.each do |date| %>
+        <td bgcolor="#E0E0E0"> o </td>
+      <% end %>
+    </tr>
+    <tr>
+      <% @habit.current_chain_dates.each do |date| %>
+        <td><%= date %></td>
+      <% end %>
+      <% @habit.upcoming_dates.each do |date| %>
+        <td><%= date %></td>
+      <% end %>
+    </tr>
+  </table>
+</div>
+
+<div><p>Your previous longest chain was <%= @habit.previous_longest_chain_length %> days long.</p></div>
+
+<h3>Log a Completed Day</h3>
+
+<%= render :partial => 'completed_days/form' %>
+ 
+<%= link_to 'Back to My Current Habit Chains', habits_path, :class => "btn btn-link" %>
+
+<h3>Remove Completed Days</h3>
+
+<table>
+  <tr>
+    <th>Completed Days</th>
+  </tr>
+ 
+  <% @habit.completed_days_sorted.each do |completed_day| %>
+    <tr>
+      <td><%= completed_day.date %></td>
+      <td><%= link_to 'Delete', edit_habit_path(@habit),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
+

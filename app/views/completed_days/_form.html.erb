@@ -1,4 +1,4 @@
-<%= form_for @completed_day do |f| %>
+<%= form_for @completed_day, :url => create_completed_day_habit_path(@habit) do |f| %>
  
   <% if @completed_day.errors.any? %>
     <div id="error_explanation">

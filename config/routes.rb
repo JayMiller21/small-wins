@@ -16,9 +16,13 @@ Rails.application.routes.draw do
 
   get 'chains/index'
 
-  resources :habits
-  resources :chains 
+  resources :habits do
+    member do
+      post 'create_completed_day'
+    end
+  end
   resources :completed_days
+  resources :chains 
   root 'chains#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

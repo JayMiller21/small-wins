@@ -12,6 +12,9 @@ class HabitsController < ApplicationController
   end
 
   def edit
+    @habit = Habit.find(params[:id])
+    @completed_days = @habit.completed_days.sort_by(&:date)
+    @completed_day = CompletedDay.new
   end
 
   def create
@@ -30,9 +33,24 @@ class HabitsController < ApplicationController
   def destroy
   end
 
+  def create_completed_day
+    @habit = Habit.find(params[:id])
+    @completed_day = @habit.completed_days.new(completed_day_params)
+    if @completed_day.save
+      @habit.update_chains
+      redirect_to habits_path
+    else
+      render 'edit'
+    end
+  end
+
   private
     def habit_params
       params.require(:habit).permit(:name)
+    end
+
+    def completed_day_params
+      params.require(:completed_day).permit(:date)
     end
 
 end
