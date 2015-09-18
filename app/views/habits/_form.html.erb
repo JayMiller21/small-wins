@@ -1,0 +1,25 @@
+<%= form_for @habit do |f| %>
+ 
+  <% if @habit.errors.any? %>
+    <div id="error_explanation">
+      <h3>
+        <%= pluralize(@habit.errors.count, "error") %> prohibited this habit from being created:
+      </h3>
+      <ul>
+        <% @habit.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+  <div class="form-group">
+    <%= f.label "Habit Name:" %><br>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+ 
+  <div class="form-group">
+    <%= f.submit "Submit", class: "btn btn-default" %>
+  </div>
+ 
+<% end %>

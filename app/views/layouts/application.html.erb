@@ -2,13 +2,20 @@
 <html>
 <head>
   <title>Habits</title>
+  <%= favicon_link_tag(source='favicon.ico') %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+  <div id="main-container" class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
 
 </body>
 </html>

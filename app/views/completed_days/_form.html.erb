@@ -1,0 +1,25 @@
+<%= form_for @completed_day do |f| %>
+ 
+  <% if @completed_day.errors.any? %>
+    <div id="error_explanation">
+      <h3>
+        <%= pluralize(@completed_day.errors.count, "error") %> prohibited this date from being logged:
+      </h3>
+      <ul>
+        <% @completed_day.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+  <div class="form-group">
+    <%= f.label "Date (yyyy-mm-dd):" %><br>
+    <%= f.text_field :date, class: "form-control" %>
+  </div>
+ 
+  <div class="form-group">
+    <%= f.submit "Submit", class: "btn btn-default" %>
+  </div>
+ 
+<% end %>

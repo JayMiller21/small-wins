@@ -1,4 +1,26 @@
 Rails.application.routes.draw do
+  
+  get 'habits/index'
+
+  get 'habits/show'
+
+  get 'habits/new'
+
+  get 'habits/edit'
+
+  get 'habits/create'
+
+  get 'habits/update'
+
+  get 'habits/destroy'
+
+  get 'chains/index'
+
+  resources :habits
+  resources :chains 
+  resources :completed_days
+  root 'chains#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

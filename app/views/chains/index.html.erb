@@ -1,0 +1,29 @@
+<h1>Your Current Chain</h1>
+
+<div>
+  <%= link_to 'Log Completed Days', new_completed_day_path %>
+</div>
+
+<div>
+  <table>
+
+    <tr>
+      <% @current_chain_dates.each do |date| %>
+        <td bgcolor="red"> x </td>
+      <% end %>
+      <% @upcoming_dates.each do |date| %>
+        <td bgcolor="#E0E0E0"> o </td>
+      <% end %>
+    </tr>
+    <tr>
+      <% @current_chain_dates.each do |date| %>
+        <td><%= date %></td>
+      <% end %>
+      <% @upcoming_dates.each do |date| %>
+        <td><%= date %></td>
+      <% end %>
+    </tr>
+  </table>
+</div>
+
+<div><p>Your previous longest chain was <%= @previous_longest_chain_length %> days long.</p></div>
