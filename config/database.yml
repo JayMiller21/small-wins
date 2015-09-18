@@ -29,8 +29,8 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: 5
-  username: jennifer.a.miller2@gmail.com
-  # password: 
+  username: habits
+  password: 
 
 
 development:
