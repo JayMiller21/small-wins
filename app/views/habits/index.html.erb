@@ -1,0 +1,9 @@
+<h1>Your Current Habit Chains</h1>
+
+<div>
+  <%= link_to 'New Habit', new_habit_path %>
+</div>
+
+<div>
+  <%= render partial: "habit", collection: @habits %>
+</div>
