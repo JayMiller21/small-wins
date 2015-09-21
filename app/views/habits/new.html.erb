@@ -2,7 +2,7 @@
 
 <%= render 'form' %>
  
-<%= link_to 'Back to My Habit Chains', habits_path, :class => "btn btn-link" %>
+<%= link_to 'Back to My Habit Chains', user_habits_path, :class => "btn btn-link" %>
 
 <h1>Remove Habits</h1>
 
@@ -14,7 +14,7 @@
   <% @habits.each do |habit| %>
     <tr>
       <td><%= habit.name %></td>
-      <td><%= link_to 'Delete', habit_path(habit),
+      <td><%= link_to 'Delete', user_habit_path(current_user,habit),
               method: :delete,
               data: { confirm: 'Are you sure?' } %></td>
     </tr>

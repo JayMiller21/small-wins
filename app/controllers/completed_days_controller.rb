@@ -14,7 +14,7 @@ class CompletedDaysController < ApplicationController
     @completed_day = CompletedDay.new(completed_day_params)
     if @completed_day.save
       CompletedDay.update_chains
-      redirect_to habits_path
+      redirect_to user_habits_path
     else
       render 'new'
     end
