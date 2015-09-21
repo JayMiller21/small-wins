@@ -44,3 +44,7 @@ gem 'jquery-ui-rails'
 gem 'jquery-turbolinks'
 gem 'rails_12factor', group: :production
 ruby "2.0.0"
+gem 'figaro'
+gem 'omniauth-facebook'
+gem 'omniauth'
+gem 'devise'
