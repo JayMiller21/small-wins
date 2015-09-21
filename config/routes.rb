@@ -1,37 +1,23 @@
 Rails.application.routes.draw do
+  get 'welcome/index'
+  root 'welcome#index'
+
   devise_for :users
   get 'sessions/create'
-
   get 'sessions/destroy'
 
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'logout', to: 'sessions#destroy'
-  
-  get 'habits/index'
 
-  get 'habits/show'
-
-  get 'habits/new'
-
-  get 'habits/edit'
-
-  get 'habits/create'
-
-  get 'habits/update'
-
-  get 'habits/destroy'
-
-  get 'chains/index'
-
-  resources :habits do
-    member do
-      post 'create_completed_day'
+  resources :users do
+    resources :habits do
+      member do
+        post 'create_completed_day'
+      end
     end
   end
   resources :completed_days
   resources :chains 
-  root 'habits#index'
-
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
