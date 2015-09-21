@@ -9,15 +9,18 @@
 </head>
 <body>
 
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+<%= render "layouts/header" %>
+
   <div id="main-container" class="container">
     <div class="row">
       <div class="col-xs-12">
+        <%= render "layouts/notice_and_alert" %>
         <%= yield %>
       </div>
     </div>
   </div>
+
+<%= render "layouts/footer" %>
 
 </body>
 </html>
