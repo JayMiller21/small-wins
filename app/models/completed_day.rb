@@ -6,7 +6,7 @@ class CompletedDay < ActiveRecord::Base
 
   validates :date, presence: { message: " may not be blank" }
 
-  validates :date, uniqueness: { message: "has already been logged" }
+  validates :date, uniqueness: { scope: [:habit_id], message: "has already been logged" }
 
 
   def self.update_chains
