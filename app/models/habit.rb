@@ -23,6 +23,14 @@ class Habit < ActiveRecord::Base
     end
   end
 
+  def current_chain_length
+    if current_chain.nil?
+      0
+    else
+      self.current_chain.chain_length
+    end
+  end
+
   def current_chain_dates
     if self.current_chain.nil?
       return []

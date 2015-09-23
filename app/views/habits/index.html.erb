@@ -1,9 +1,16 @@
-<h1>Your Current Habit Chains</h1>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h2 class="panel-title">Your Current Habit Chains</h2>
+  </div>
+  <div class="panel-body">
 
-<div>
-  <%= link_to 'New Habit', new_user_habit_path %>
-</div>
+    <div>
+      <%= link_to 'New Habit', new_user_habit_path, class: "btn btn-default", role: "button" %>
+    </div>
 
-<div>
-  <%= render partial: "habit", collection: @habits %>
+    <div>
+      <%= render partial: "habit", collection: @habits %>
+    </div>
+
+  </div>
 </div>
