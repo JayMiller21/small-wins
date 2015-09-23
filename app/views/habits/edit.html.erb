@@ -40,7 +40,7 @@
   <% @habit.completed_days_sorted.each do |completed_day| %>
     <tr>
       <td><%= completed_day.date %></td>
-      <td><%= link_to 'Delete', edit_habit_path(@habit),
+      <td><%= link_to 'Delete', edit_user_habit_path(current_user, @habit),
               method: :delete,
               data: { confirm: 'Are you sure?' } %></td>
     </tr>
