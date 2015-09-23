@@ -1,49 +1,60 @@
-<h1>Your Current <%= @habit.name %> Chain</h1>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"> <%= @habit.name %> </h3>
+  </div>
+  <div class="panel-body">
 
-<div>
-  <table>
+    <div>
+      <h3>Current Chain</h3>
+      <table>
 
-    <tr>
-      <% @habit.current_chain_dates.each do |date| %>
-        <td bgcolor="red"> x </td>
+        <tr>
+          <% @habit.current_chain_dates.each do |date| %>
+            <td bgcolor="red"> x </td>
+          <% end %>
+          <% @habit.upcoming_dates.each do |date| %>
+            <td bgcolor="#E0E0E0"> o </td>
+          <% end %>
+        </tr>
+        <tr>
+          <% @habit.current_chain_dates.each do |date| %>
+            <td><%= date %></td>
+          <% end %>
+          <% @habit.upcoming_dates.each do |date| %>
+            <td><%= date %></td>
+          <% end %>
+        </tr>
+      </table>
+    </div>
+
+    <div><p>Your previous longest chain was <%= @habit.previous_longest_chain_length %> days long.</p></div>
+
+    <!-- <h3>Log a Completed Day</h3> -->
+
+    <%= render :partial => 'completed_days/form' %>
+     
+    <div>
+      <%= link_to 'Back to My Current Habit Chains', user_habits_path, class: "btn btn-default", role: "button" %>
+    </div>
+
+    <!-- <h3>Remove Completed Days</h3> -->
+
+    <table>
+      <tr>
+        <th>Completed Days</th>
+      </tr>
+     
+      <% @habit.completed_days_sorted.each do |completed_day| %>
+        <tr>
+          <td><%= completed_day.date %></td>
+          <td><%= link_to 'Delete', edit_user_habit_path(current_user, @habit),
+                  method: :delete,
+                  data: { confirm: 'Are you sure?' },
+                  class: "btn btn-default btn-xs",
+                  role: "button" %></td>
+        </tr>
       <% end %>
-      <% @habit.upcoming_dates.each do |date| %>
-        <td bgcolor="#E0E0E0"> o </td>
-      <% end %>
-    </tr>
-    <tr>
-      <% @habit.current_chain_dates.each do |date| %>
-        <td><%= date %></td>
-      <% end %>
-      <% @habit.upcoming_dates.each do |date| %>
-        <td><%= date %></td>
-      <% end %>
-    </tr>
-  </table>
+    </table>
+
+  </div>
 </div>
-
-<div><p>Your previous longest chain was <%= @habit.previous_longest_chain_length %> days long.</p></div>
-
-<h3>Log a Completed Day</h3>
-
-<%= render :partial => 'completed_days/form' %>
- 
-<%= link_to 'Back to My Current Habit Chains', user_habits_path, :class => "btn btn-link" %>
-
-<h3>Remove Completed Days</h3>
-
-<table>
-  <tr>
-    <th>Completed Days</th>
-  </tr>
- 
-  <% @habit.completed_days_sorted.each do |completed_day| %>
-    <tr>
-      <td><%= completed_day.date %></td>
-      <td><%= link_to 'Delete', edit_user_habit_path(current_user, @habit),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
-</table>
-
