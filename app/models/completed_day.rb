@@ -8,6 +8,7 @@ class CompletedDay < ActiveRecord::Base
 
   validates :date, uniqueness: { scope: [:habit_id], message: "has already been logged" }
 
+  validates :date, :timeliness => {:on_or_before => lambda { Date.current }, :type => :date, :on_or_before_message => "is in the future"}
 
   def self.update_chains
     completed_days = CompletedDay.all.sort_by(&:date)
