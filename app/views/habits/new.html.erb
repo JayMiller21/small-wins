@@ -1,22 +1,29 @@
-<h1>Track a New Habit</h1>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Track a New Habit</h3>
+  </div>
+  <div class="panel-body">
 
-<%= render 'form' %>
- 
-<%= link_to 'Back to My Habit Chains', user_habits_path, :class => "btn btn-link" %>
+    <%= render 'form' %>
+     
+    <%= link_to 'Back to My Habit Chains', user_habits_path, class: "btn btn-default", role: "button" %>
 
-<h1>Remove Habits</h1>
+    <table>
+      <tr>
+        <th>My Habits</th>
+      </tr>
+     
+      <% @habits.each do |habit| %>
+        <tr>
+          <td><%= habit.name %></td>
+          <td><%= link_to 'Delete', user_habit_path(current_user,habit),
+                  method: :delete,
+                  data: { confirm: 'Are you sure?' },
+                  class: "btn btn-default btn-xs",
+                  role: "button" %></td>
+        </tr>
+      <% end %>
+    </table>
 
-<table>
-  <tr>
-    <th>Habits</th>
-  </tr>
- 
-  <% @habits.each do |habit| %>
-    <tr>
-      <td><%= habit.name %></td>
-      <td><%= link_to 'Delete', user_habit_path(current_user,habit),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
-</table>
+  </div>
+</div>

@@ -56,5 +56,13 @@
       <% end %>
     </table>
 
+    <div>
+      <%= link_to 'Delete This Habit', user_habit_path(current_user, @habit),
+                  method: :delete,
+                  data: { confirm: 'Are you sure?' },
+                  class: "btn btn-default",
+                  role: "button" %>
+    </div>
+
   </div>
 </div>
