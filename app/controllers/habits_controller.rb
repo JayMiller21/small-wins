@@ -31,6 +31,10 @@ class HabitsController < ApplicationController
   end
 
   def destroy
+    @habit = Habit.find(params[:id])
+    @habit.destroy
+    
+    redirect_to user_habits_path
   end
 
   def create_completed_day
