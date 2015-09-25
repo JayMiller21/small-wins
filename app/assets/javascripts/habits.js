@@ -6,18 +6,18 @@ var ready;
 ready = function() {
 
   google.load('visualization', '1.0', { packages:["timeline"] });
-  google.setOnLoadCallback(drawChart);
+  google.setOnLoadCallback(habits.forEach(drawChart));
 
-  function drawChart() {
-    var container = document.getElementById('timeline');
+  function drawChart(habit,index,array) {
+    var container = document.getElementById(habit[0] + '-timeline');
     var chart = new google.visualization.Timeline(container);
     var dataTable = new google.visualization.DataTable();
 
     dataTable.addColumn({ type: 'string', id: 'President' });
     dataTable.addColumn({ type: 'date', id: 'Start' });
     dataTable.addColumn({ type: 'date', id: 'End' });
-    dataTable.addRows([
-      habits[0]]);
+    dataTable.addRows(
+      [habit]);
 
     chart.draw(dataTable);
   }
