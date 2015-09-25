@@ -24,7 +24,7 @@ class CompletedDaysController < ApplicationController
     @completed_day = CompletedDay.find(params[:id])
     @completed_day.destroy
     CompletedDay.update_chains
-    redirect_to chains_path
+    redirect_to edit_user_habit_path(current_user,@completed_day.habit)
   end
 
   private
