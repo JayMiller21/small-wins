@@ -1,6 +1,17 @@
 class HabitsController < ApplicationController
   def index
     current_user_habits
+    @jshabits_ruby = current_user_habits.map { |habit|
+      [habit.name,
+        [habit.current_chain.start_date.year,
+        habit.current_chain.start_date.month,
+        habit.current_chain.start_date.day],
+        [habit.current_chain.end_date.year,
+        habit.current_chain.end_date.month,
+        habit.current_chain.end_date.day]
+      ]
+    }
+    @jshabits = @jshabits_ruby.to_json
   end 
 
   def show

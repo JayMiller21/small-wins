@@ -17,10 +17,11 @@ ready = function() {
     dataTable.addColumn({ type: 'date', id: 'Start' });
     dataTable.addColumn({ type: 'date', id: 'End' });
     dataTable.addRows([
-      [ 'Washington', new Date(1789, 3, 30), new Date(1797, 2, 4) ]]);
+      habits[0]]);
 
     chart.draw(dataTable);
   }
+
 };
 
 $(document).ready(ready);

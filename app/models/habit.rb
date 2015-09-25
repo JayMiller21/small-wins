@@ -3,6 +3,8 @@ class Habit < ActiveRecord::Base
   has_many :chains
   belongs_to :user
 
+  attr_accessor :start_date, :end_date
+
   def completed_days_sorted
     self.completed_days.sort_by(&:date)
   end

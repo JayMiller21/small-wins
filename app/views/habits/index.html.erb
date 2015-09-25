@@ -1,3 +1,11 @@
+<%= javascript_tag do %>
+  var habitsRaw = <%= raw @jshabits %>;
+  var habits = habitsRaw.map(function(h){
+  var array = [h[0],new Date(h[1]),new Date(h[2])];
+  return array;
+});
+<% end %>
+
 <div class="panel panel-default">
   <div class="panel-heading">
     <h2 class="panel-title">My Chains</h2>
@@ -5,6 +13,8 @@
   <div class="panel-body">
 
     <div id="timeline" style="height: 180px;"></div>
+
+    <div><%= @jshabits %></div>
 
     <div>
       <%= link_to 'New Habit', new_user_habit_path, class: "btn btn-default", role: "button" %>
