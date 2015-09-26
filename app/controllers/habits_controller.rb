@@ -1,17 +1,13 @@
 class HabitsController < ApplicationController
   def index
     @habits = current_user.habits
-
-    if !@habits[0].nil?
       @jshabits_ruby = @habits.map { |habit|
         if !habit.chains[0].nil?
           habit.formatted_for_area_chart
         end
       }
-      if !@jshabits_ruby[0].nil?
         @jshabits = @jshabits_ruby.to_json
-      end
-    end
+    
     @no_chains_message = "You have not logged any days yet!"
     @no_habits_message = "You're not tracking any habits yet!"
   end 

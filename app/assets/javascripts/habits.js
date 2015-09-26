@@ -5,9 +5,15 @@
 var ready;
 ready = function() {
 
-  google.setOnLoadCallback(habits.forEach(drawChart));
+  google.setOnLoadCallback(function(){
+    for (i=0; i<habits.length; i++) {
+      if (habits[i] !== null) {
+        drawChart(habits[i])
+      }
+    }
+  });
 
-  function drawChart(habit,index,array) {
+  function drawChart(habit) {
     var container = document.getElementById(habit[0] + '-timeline');
     var chart = new google.visualization.AreaChart(container);
 
