@@ -14,7 +14,7 @@
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h2 class="panel-title">My Chains</h2>
+    <h2 class="panel-title">My Habits</h2>
   </div>
   <div class="panel-body">
 
@@ -22,7 +22,7 @@
       <% if !@habits[0].nil? %>
         <%= render partial: "habit", collection: @habits %>
       <% else %>
-        <p><%= @no_habits_message %></p>
+        <h4><%= @no_habits_message %></h4>
       <% end %>
     </div>
 

@@ -1,22 +1,15 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title"><%= habit.name %></h3>
+    <h3 class="panel-title"><%= link_to habit.name, edit_user_habit_path(current_user,habit.id) %></h3>
   </div>
   <div class="panel-body">
 
   <% if !habit.chains[0].nil? %>
+    <h4>Your current chain is <%= habit.latest_chain_length %> days long!</h4>
     <div id=<%= habit.name.gsub(/\s/,"-") + "-timeline" %> style="height: 120px;"></div>  
-
-    <p>Your current chain is <%= habit.latest_chain_length %> days long!</p>
   <% else %>
-    <%= @no_chains_message %>
+    <h4><%= @no_chains_message %></h4>
   <% end %>
-    
-<!--     <p>Your previous longest chain was <%# habit.previous_longest_chain_length %> days long.</p> -->
-
-    <div>
-      <%= link_to 'Update Chain', edit_user_habit_path(current_user,habit), class: "btn btn-default", role: "button" %>
-    </div>
 
   </div>
 </div>

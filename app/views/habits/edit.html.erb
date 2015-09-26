@@ -6,9 +6,9 @@
 
     <%= render :partial => 'completed_days/form' %>
 
-    <table>
+    <table class="table table-condensed table-striped">
       <tr>
-        <th>Completed Days</th>
+        <th colspan="2">Completed Days</th>
       </tr>
       <% @habit.completed_days_sorted.each do |completed_day| %>
         <tr>
