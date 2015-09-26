@@ -3,6 +3,10 @@ class Habit < ActiveRecord::Base
   has_many :chains
   belongs_to :user
 
+  validates :name, presence: { message: " may not be blank" }
+
+  validates :name, uniqueness: { message: "has already been used" }
+
   attr_accessor :start_date, :end_date
 
   def completed_days_sorted

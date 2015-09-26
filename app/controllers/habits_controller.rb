@@ -32,6 +32,7 @@ class HabitsController < ApplicationController
 
   def create
     @habits = current_user.habits
+    habit_params[:name].capitalize!
     @habit = current_user.habits.new(habit_params)
     if @habit.save
       redirect_to user_habits_path
