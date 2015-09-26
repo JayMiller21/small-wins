@@ -16,11 +16,11 @@
       <% @habits.each do |habit| %>
         <tr>
           <td><%= habit.name %></td>
-          <td><%= link_to 'Delete', user_habit_path(current_user,habit),
+          <!-- <td><%# link_to 'Delete', user_habit_path(current_user,habit.id),
                   method: :delete,
                   data: { confirm: 'Are you sure?' },
                   class: "btn btn-default btn-xs",
-                  role: "button" %></td>
+                  role: "button" %></td> -->
         </tr>
       <% end %>
     </table>

@@ -1,21 +1,28 @@
 class HabitsController < ApplicationController
   def index
-    current_user_habits
-    # byebug
-    current_user_habits.each { |habit|
-      habit.update_chains
-    }
-    @jshabits_ruby = current_user_habits.map { |habit|
-      habit.formatted_for_area_chart
-    }
-    @jshabits = @jshabits_ruby.to_json
+    @habits = current_user.habits
+
+    if !@habits[0].nil?
+      @jshabits_ruby = @habits.map { |habit|
+        if !habit.chains[0].nil?
+          habit.formatted_for_area_chart
+        else
+          @no_chains_message = "You have not logged any days."
+        end
+      }
+      if !@jshabits_ruby[0].nil?
+        @jshabits = @jshabits_ruby.to_json
+      end
+    else
+      @no_habits_message = "You're not tracking any habits."
+    end
   end 
 
   def show
   end
 
   def new
-    current_user_habits
+    @habits = current_user.habits
     @habit = current_user.habits.new
   end
 
@@ -26,7 +33,7 @@ class HabitsController < ApplicationController
   end
 
   def create
-    current_user_habits
+    @habits = current_user.habits
     @habit = current_user.habits.new(habit_params)
     if @habit.save
       redirect_to user_habits_path
@@ -42,14 +49,13 @@ class HabitsController < ApplicationController
     @habit = Habit.find(params[:id])
     @habit.destroy
     
-    redirect_to user_habits_path
+    redirect_to user_habits_path(current_user)
   end
 
   def create_completed_day
     @habit = Habit.find(params[:id])
     @completed_day = @habit.completed_days.new(completed_day_params)
     if @completed_day.save
-      @habit.update_chains
       redirect_to user_habits_path
     else
       render 'edit'
@@ -65,8 +71,8 @@ class HabitsController < ApplicationController
       params.require(:completed_day).permit(:date)
     end
 
-    def current_user_habits
-      @habits = current_user.habits.sort_by(&:name)
-    end
+    # def current_user_habits
+    #   @habits = current_user.habits.sort_by(&:name)
+    # end
 
 end

@@ -8,7 +8,7 @@
 
     <p>Your current chain is <%= habit.latest_chain_length %> days long!</p>
     
-<!--     <p>Your previous longest chain was <%= habit.previous_longest_chain_length %> days long.</p> -->
+<!--     <p>Your previous longest chain was <%# habit.previous_longest_chain_length %> days long.</p> -->
 
     <div>
       <%= link_to 'Update Chain', edit_user_habit_path(current_user,habit), class: "btn btn-default", role: "button" %>

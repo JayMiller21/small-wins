@@ -14,11 +14,10 @@
       <tr>
         <th>Completed Days</th>
       </tr>
-     
       <% @habit.completed_days_sorted.each do |completed_day| %>
         <tr>
           <td><%= completed_day.date %></td>
-          <td><%= link_to 'Delete', completed_day_path(completed_day),
+          <td><%= link_to 'Delete', completed_day_path(completed_day.id),
                   method: :delete,
                   data: { confirm: 'Are you sure?' },
                   class: "btn btn-default btn-xs",
