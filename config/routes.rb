@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'logout', to: 'sessions#destroy'
 
-  resources :users do
+  resources :users, only: [] do
     resources :habits do
       member do
         post 'create_completed_day'
