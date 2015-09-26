@@ -23,9 +23,9 @@ class CompletedDay < ActiveRecord::Base
           Chain.create(:start_date => chain[0].date, :end_date => chain[-1].date, :current => FALSE)
         }
 
-        current_chain = Chain.all.max_by {|chain| chain.start_date}
-        current_chain.current = TRUE
-        current_chain.save
+        latest_chain = Chain.all.max_by {|chain| chain.start_date}
+        latest_chain.current = TRUE
+        latest_chain.save
         # TODO:
         # try sidekiq for async 
   end

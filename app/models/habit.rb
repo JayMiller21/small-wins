@@ -10,43 +10,26 @@ class Habit < ActiveRecord::Base
   end
 
   def latest_chain
-    self.chains.max_by {|chain| chain.start_date}
+    latest_chain = self.chains.max_by {|chain| chain.start_date} 
   end
 
-  def current_chain
+  def latest_chain_length
     if latest_chain.nil?
-      return nil
-    else
-      if Date.today >= self.latest_chain.start_date && Date.today <=latest_chain.end_date
-        return latest_chain
-      else
-        return nil
-      end
-    end
-  end
-
-  def current_chain_length
-    if current_chain.nil?
       0
     else
-      self.current_chain.chain_length
+      self.latest_chain.chain_length
     end
   end
 
-  def current_chain_dates
-    if self.current_chain.nil?
-      return []
-    else
-      (self.current_chain.start_date..self.current_chain.end_date).map{ |date| date.strftime("%b %d") }
-    end
-  end
-
-  def upcoming_dates
-    if self.current_chain.nil?
-      (Date.today..Date.today+4).map{ |date| date.strftime("%b %d") }
-    else
-      (self.current_chain.end_date+1..self.current_chain.end_date+5).map{ |date| date.strftime("%b %d") }
-    end
+  def formatted_for_area_chart
+      [self.name,
+        [self.latest_chain.start_date.year,
+        self.latest_chain.start_date.month,
+        self.latest_chain.start_date.day],
+        [self.latest_chain.end_date.year,
+        self.latest_chain.end_date.month,
+        self.latest_chain.end_date.day]
+      ]
   end
 
   def update_chains
@@ -62,12 +45,10 @@ class Habit < ActiveRecord::Base
       Chain.create(:start_date => chain[0].date, :end_date => chain[-1].date, :current => FALSE, :habit_id => self.id)
     }
 
-    if !self.current_chain.nil?
-      self.current_chain.update_attribute(:current, TRUE)
-    end
+    # if !self.latest_chain.nil?
+    #   self.latest_chain.update_attribute(:current, TRUE)
+    # end
 
-    # TODO:
-    # try sidekiq for async 
   end
 
   def previous_longest_chain

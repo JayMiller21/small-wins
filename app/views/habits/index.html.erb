@@ -16,6 +16,8 @@
       <%= link_to 'New Habit', new_user_habit_path, class: "btn btn-default", role: "button" %>
     </div>
 
+<!--   <div>debug <%= current_user.habits.first %></div> -->
+
     <div>
       <%= render partial: "habit", collection: @habits %>
     </div>

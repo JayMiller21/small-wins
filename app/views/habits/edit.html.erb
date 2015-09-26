@@ -4,40 +4,11 @@
   </div>
   <div class="panel-body">
 
-    <div>
-      <h3>Current Chain</h3>
-      <table>
-
-        <tr>
-          <% @habit.current_chain_dates.each do |date| %>
-            <td bgcolor="red"> x </td>
-          <% end %>
-          <% @habit.upcoming_dates.each do |date| %>
-            <td bgcolor="#E0E0E0"> o </td>
-          <% end %>
-        </tr>
-        <tr>
-          <% @habit.current_chain_dates.each do |date| %>
-            <td><%= date %></td>
-          <% end %>
-          <% @habit.upcoming_dates.each do |date| %>
-            <td><%= date %></td>
-          <% end %>
-        </tr>
-      </table>
-    </div>
-
-    <div><p>Your previous longest chain was <%= @habit.previous_longest_chain_length %> days long.</p></div>
-
-    <!-- <h3>Log a Completed Day</h3> -->
-
     <%= render :partial => 'completed_days/form' %>
      
     <div>
       <%= link_to 'Back to My Current Habit Chains', user_habits_path, class: "btn btn-default", role: "button" %>
     </div>
-
-    <!-- <h3>Remove Completed Days</h3> -->
 
     <table>
       <tr>
