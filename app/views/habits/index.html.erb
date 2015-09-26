@@ -19,7 +19,11 @@
 <!--   <div>debug <%= current_user.habits.first %></div> -->
 
     <div>
-      <%= render partial: "habit", collection: @habits %>
+      <% if !@habits[0].nil? %>
+        <%= render partial: "habit", collection: @habits %>
+      <% else %>
+        <p><%= @no_habits_message %></p>
+      <% end %>
     </div>
 
   </div>

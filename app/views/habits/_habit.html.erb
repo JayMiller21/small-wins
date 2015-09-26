@@ -4,9 +4,13 @@
   </div>
   <div class="panel-body">
 
+  <% if !habit.chains[0].nil? %>
     <div id=<%= habit.name + "-timeline" %> style="height: 120px;"></div>  
 
     <p>Your current chain is <%= habit.latest_chain_length %> days long!</p>
+  <% else %>
+    <%= @no_chains_message %>
+  <% end %>
     
 <!--     <p>Your previous longest chain was <%# habit.previous_longest_chain_length %> days long.</p> -->
 

@@ -7,14 +7,14 @@ class HabitsController < ApplicationController
         if !habit.chains[0].nil?
           habit.formatted_for_area_chart
         else
-          @no_chains_message = "You have not logged any days."
+          @no_chains_message = "You have not logged any days yet!"
         end
       }
       if !@jshabits_ruby[0].nil?
         @jshabits = @jshabits_ruby.to_json
       end
     else
-      @no_habits_message = "You're not tracking any habits."
+      @no_habits_message = "You're not tracking any habits yet!"
     end
   end 
 
