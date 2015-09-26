@@ -10,7 +10,4 @@ class ApplicationController < ActionController::Base
     root_path
   end
 
- # def stored_location_for
- #  nil
- # end
 end

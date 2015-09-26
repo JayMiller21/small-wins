@@ -14,7 +14,7 @@ ready = function() {
   });
 
   function drawChart(habit) {
-    var container = document.getElementById(habit[0] + '-timeline');
+    var container = document.getElementById(habit[0].replace(/\s+/g,"-") + '-timeline');
     var chart = new google.visualization.AreaChart(container);
 
     var d = new Date();

@@ -5,7 +5,7 @@
   <div class="panel-body">
 
   <% if !habit.chains[0].nil? %>
-    <div id=<%= habit.name + "-timeline" %> style="height: 120px;"></div>  
+    <div id=<%= habit.name.gsub(/\s/,"-") + "-timeline" %> style="height: 120px;"></div>  
 
     <p>Your current chain is <%= habit.latest_chain_length %> days long!</p>
   <% else %>
