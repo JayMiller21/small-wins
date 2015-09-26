@@ -4,11 +4,11 @@
   <title>Habits</title>
   <%= favicon_link_tag(source='favicon.ico') %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1.1','packages':['corechart','calendar']}]}"></script>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1.1','packages':['corechart','calendar']}]}"></script>
 </head>
-<body>
+<body data-no-turbolink>
 
 <%= render "layouts/header" %>
 

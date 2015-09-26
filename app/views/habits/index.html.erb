@@ -1,13 +1,15 @@
 <%= javascript_tag do %>
+
   var habitsRaw = <%= raw @jshabits %>;
   var habits = habitsRaw.map(function(h){
-  if (h==null) {
-    return null;
-  } else {
-    var array = [h[0],new Date(h[1]),new Date(h[2])];
-    return array;
-  };
-});
+    if (h==null) {
+      return null;
+    } else {
+      var array = [h[0],new Date(h[1]),new Date(h[2])];
+      return array;
+    };
+  });
+
 <% end %>
 
 <div class="panel panel-default">

@@ -8,7 +8,7 @@ ready = function() {
   google.setOnLoadCallback(function(){
     for (i=0; i<habits.length; i++) {
       if (habits[i] !== null) {
-        drawChart(habits[i])
+        drawChart(habits[i]);
       }
     }
   });
