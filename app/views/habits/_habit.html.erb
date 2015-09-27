@@ -5,7 +5,7 @@
   <div class="panel-body">
 
   <% if !habit.chains[0].nil? %>
-    <h4>Your current chain is <%= habit.latest_chain_length %> days long!</h4>
+    <h4>Your <%= habit.name.downcase %> chain is <%= habit.latest_chain_length %> days long!</h4>
     <div id=<%= habit.name.gsub(/\s/,"-") + "-timeline" %> style="height: 120px;"></div>  
   <% else %>
     <h4><%= @no_chains_message %></h4>
