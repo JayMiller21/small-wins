@@ -50,3 +50,5 @@ gem 'omniauth'
 gem 'devise'
 gem 'validates_timeliness', '~> 3.0'
 gem 'byebug', '~> 6.0.2'
+gem 'puma'
+gem "rack-timeout"
