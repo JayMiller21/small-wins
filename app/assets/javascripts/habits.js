@@ -15,7 +15,7 @@ ready = function() {
 
   function drawChart(habit) {
     var container = document.getElementById(habit[0].replace(/\s+/g,"-") + '-timeline');
-    var chart = new google.visualization.AreaChart(container);
+    var chart = new google.visualization.ColumnChart(container);
 
     var d = new Date();
 
@@ -27,22 +27,25 @@ ready = function() {
       return ary;
     }));
 
-    chart.draw(data,{
-      hAxis: { 
-        viewWindow:{
-          max: new Date(d.getFullYear(),d.getMonth()+1,0),
-          min: new Date(d.getFullYear(),d.getMonth(),1)
-        },
-        gridlines: {color: "whitesmoke"}
+    var options = {
+    hAxis: {
+      viewWindow:{
+        max: new Date(d.getFullYear(),d.getMonth()+1,1),
+        min: new Date(d.getFullYear(),d.getMonth(),0)
       },
-      vAxis: {
-        gridlines: {count: 0}
-      },
-      legend: {position: "none"},
-      backgroundColor: {fill: "whitesmoke"}
-    });
-  }
+      gridlines: {color: "whitesmoke"}
+    },
+    vAxis: {
+      gridlines: {count: 0}
+    },
+    legend: {position: "none"},
+    backgroundColor: {fill: "whitesmoke"},
+    bar: {groupWidth: "21"}
+    };
+    
+    chart.draw(data,options);
 
+  };
 };
 
 $(document).ready(ready);
