@@ -26,14 +26,7 @@ class Habit < ActiveRecord::Base
   end
 
   def formatted_for_area_chart
-      [self.name,
-        [self.latest_chain[:start_date].year,
-        self.latest_chain[:start_date].month,
-        self.latest_chain[:start_date].day],
-        [self.latest_chain[:end_date].year,
-        self.latest_chain[:end_date].month,
-        self.latest_chain[:end_date].day]
-      ]
+      [self.name,self.completed_days.map { |cd| cd.date_as_ymd_array}]
   end
 
   def chains

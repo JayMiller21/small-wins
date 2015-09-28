@@ -10,23 +10,10 @@ class CompletedDay < ActiveRecord::Base
 
   validates :date, :timeliness => {:on_or_before => lambda { Date.current }, :type => :date, :on_or_before_message => "is in the future"}
 
-  def self.update_chains
-    completed_days = CompletedDay.all.sort_by(&:date)
-
-        chains = completed_days.slice_before { |completed_day|
-          index = completed_days.index(completed_day)
-          completed_days[index-1].date != completed_day.date-1.day
-        }
-
-        Chain.destroy_all
-        @chains = chains.map { |chain| 
-          Chain.create(:start_date => chain[0].date, :end_date => chain[-1].date, :current => FALSE)
-        }
-
-        latest_chain = Chain.all.max_by {|chain| chain.start_date}
-        latest_chain.current = TRUE
-        latest_chain.save
-        # TODO:
-        # try sidekiq for async 
+  def date_as_ymd_array
+    [self.date.year,
+        self.date.month,
+        self.date.day]
   end
+
 end

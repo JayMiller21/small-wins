@@ -19,11 +19,13 @@ ready = function() {
 
     var d = new Date();
 
-    var data = google.visualization.arrayToDataTable([
-          ['Date', 'Completed?'],
-          [habit[1], 1],
-          [habit[2], 1]
-        ]);
+    var data = new google.visualization.DataTable();
+    data.addColumn({ type: 'date', id: 'Date' });
+    data.addColumn({ type: 'number', id: 'Level' });
+    data.addRows(habit[1].map(function(d){
+      ary = [d,1];
+      return ary;
+    }));
 
     chart.draw(data,{
       hAxis: { 

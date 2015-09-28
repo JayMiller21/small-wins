@@ -5,7 +5,10 @@
     if (h==null) {
       return null;
     } else {
-      var array = [h[0],new Date(h[1]),new Date(h[2])];
+      var array = [h[0],h[1].map(function(c){
+        date = new Date(c);
+        return date;
+      })];
       return array;
     };
   });
