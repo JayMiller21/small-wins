@@ -12,9 +12,6 @@ class HabitsController < ApplicationController
     @no_habits_message = "You're not tracking any habits yet!"
   end 
 
-  def show
-  end
-
   def new
     @habits = current_user.habits
     @habit = current_user.habits.new
@@ -35,9 +32,6 @@ class HabitsController < ApplicationController
     else
       render 'new'
     end
-  end
-
-  def update
   end
 
   def destroy
