@@ -3,7 +3,7 @@ class HabitsController < ApplicationController
     @habits = current_user.habits
       @jshabits_ruby = @habits.map { |habit|
         if !habit.chains[0].nil?
-          habit.formatted_for_area_chart
+          habit.formatted_for_column_chart
         end
       }
         @jshabits = @jshabits_ruby.to_json
