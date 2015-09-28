@@ -14,7 +14,7 @@ class Habit < ActiveRecord::Base
   end
 
   def latest_chain
-    latest_chain = self.chains.max_by {|chain| chain["start_date"]} 
+    latest_chain = self.chains.max_by {|chain| chain[:start_date]} 
   end
 
   def latest_chain_length
