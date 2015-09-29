@@ -22,7 +22,8 @@ class CompletedDaysController < ApplicationController
   def destroy
     @completed_day = CompletedDay.find(params[:id])
     @completed_day.destroy
-    redirect_to edit_user_habit_path(current_user,@completed_day.habit)
+    redirect_to root_path
+    # redirect_to edit_user_habit_path(current_user,@completed_day.habit)
   end
 
   private

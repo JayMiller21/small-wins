@@ -1,4 +1,4 @@
-<div class="panel panel-default">
+ <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title"> <%= @habit.name %> </h3>
   </div>
@@ -13,7 +13,7 @@
       <% @habit.completed_days_sorted.each do |completed_day| %>
         <tr>
           <td><%= completed_day.date %></td>
-          <td><%= link_to 'Delete', completed_day_path(completed_day.id),
+          <td><%= link_to 'Delete', '/completed_days/completed_day.id',
                   method: :delete,
                   data: { confirm: 'Are you sure?' },
                   class: "btn btn-default btn-xs",

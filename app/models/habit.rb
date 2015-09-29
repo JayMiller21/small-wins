@@ -11,7 +11,7 @@ class Habit < ActiveRecord::Base
 
   # For a given habit, returns all completed days, sorted in ascending date order.
   def completed_days_sorted
-    self.completed_days.sort_by(&:date)
+    self.completed_days.where.not(date: nil).sort_by(&:date)
   end
 
   # For a given habit, returns an array of chains where each "chain" is a hash with the keys "start_date" and "end_date."

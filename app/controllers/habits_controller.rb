@@ -28,7 +28,7 @@ class HabitsController < ApplicationController
     habit_params[:name].titleize!
     @habit = current_user.habits.new(habit_params)
     if @habit.save
-      redirect_to user_habits_path
+      redirect_to user_habits_path(current_user)
     else
       render 'new'
     end
@@ -43,9 +43,11 @@ class HabitsController < ApplicationController
 
   def create_completed_day
     @habit = Habit.find(params[:id])
+    @completed_days = @habit.completed_days.sort_by(&:date)
     @completed_day = @habit.completed_days.new(completed_day_params)
+    # byebug
     if @completed_day.save
-      redirect_to user_habits_path
+      redirect_to user_habits_path(current_user)
     else
       render 'edit'
     end

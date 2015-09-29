@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :habits do
       member do
         post 'create_completed_day'
+        delete 'create_completed_day'
       end
     end
   end
