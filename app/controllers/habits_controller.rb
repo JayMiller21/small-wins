@@ -1,6 +1,6 @@
 class HabitsController < ApplicationController
   def index
-    @habits = current_user.habits
+    current_user_habits 
       @jshabits_ruby = @habits.map { |habit|
         if !habit.chains[0].nil?
           habit.formatted_for_column_chart
@@ -8,23 +8,23 @@ class HabitsController < ApplicationController
       }
         @jshabits = @jshabits_ruby.to_json
     
-    @no_chains_message = "You have not logged any days yet!"
-    @no_habits_message = "You're not tracking any habits yet!"
+    no_chains_message
+    no_habits_message
   end 
 
   def new
-    @habits = current_user.habits
+    current_user_habits 
     @habit = current_user.habits.new
   end
 
   def edit
-    @habit = Habit.find(params[:id])
-    @completed_days = @habit.completed_days.sort_by(&:date)
+    habit
+    completed_days
     @completed_day = CompletedDay.new
   end
 
   def create
-    @habits = current_user.habits
+    current_user_habits 
     habit_params[:name].titleize!
     @habit = current_user.habits.new(habit_params)
     if @habit.save
@@ -35,17 +35,16 @@ class HabitsController < ApplicationController
   end
 
   def destroy
-    @habit = Habit.find(params[:id])
-    @habit.destroy
+    habit
+    habit.destroy
     
     redirect_to user_habits_path(current_user)
   end
 
   def create_completed_day
-    @habit = Habit.find(params[:id])
-    @completed_days = @habit.completed_days.sort_by(&:date)
+    habit
+    completed_days
     @completed_day = @habit.completed_days.new(completed_day_params)
-    # byebug
     if @completed_day.save
       redirect_to user_habits_path(current_user)
     else
@@ -54,16 +53,37 @@ class HabitsController < ApplicationController
   end
 
   private
+    # params from new habit form
     def habit_params
       params.require(:habit).permit(:name)
     end
 
+    # params from new completed day form
     def completed_day_params
       params.require(:completed_day).permit(:date)
     end
 
-    # def current_user_habits
-    #   @habits = current_user.habits.sort_by(&:name)
-    # end
+    # Message to display in habit panel when no completed days have been logged for the given habit.
+    def no_chains_message
+      @no_chains_message = "You have not logged any days yet!"
+    end
+
+    # Message to display in habits panel when no habits have been created.
+    def no_habits_message
+      @no_habits_message = "You're not tracking any habits yet!"
+    end
+
+    # Array of current user's habits
+    def current_user_habits
+      @habits = current_user.habits
+    end
+
+    def habit
+      @habit = Habit.find(params[:id])
+    end
+
+    def completed_days
+      @completed_days = habit.completed_days_sorted
+    end
 
 end
