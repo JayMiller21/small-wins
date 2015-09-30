@@ -45,6 +45,16 @@ class Habit < ActiveRecord::Base
       [self.name,self.completed_days.map { |cd| cd.date_as_ymd_array}]
   end
 
+  # For a habit collection, returns a json array of habit objects in the format needed for creating column charts in js.
+  def self.formatted_for_column_chart
+    jshabits_ruby = all.map { |habit|
+        if !habit.chains[0].nil?
+          habit.formatted_for_column_chart
+        end
+      }
+    jshabits = jshabits_ruby.to_json
+  end
+
   # def previous_longest_chain
   #   self.chains.where(current: FALSE).max_by{ |chain| chain.chain_length } 
   # end

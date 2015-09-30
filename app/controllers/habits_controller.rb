@@ -1,13 +1,7 @@
 class HabitsController < ApplicationController
   def index
     current_user_habits 
-      @jshabits_ruby = @habits.map { |habit|
-        if !habit.chains[0].nil?
-          habit.formatted_for_column_chart
-        end
-      }
-        @jshabits = @jshabits_ruby.to_json
-    
+    @jshabits = current_user_habits.formatted_for_column_chart
     no_chains_message
     no_habits_message
   end 
@@ -37,7 +31,6 @@ class HabitsController < ApplicationController
   def destroy
     habit
     habit.destroy
-    
     redirect_to user_habits_path(current_user)
   end
 
@@ -78,10 +71,12 @@ class HabitsController < ApplicationController
       @habits = current_user.habits
     end
 
+    # Habit object from params
     def habit
       @habit = Habit.find(params[:id])
     end
 
+    # Habit's completed days sorted
     def completed_days
       @completed_days = habit.completed_days_sorted
     end
