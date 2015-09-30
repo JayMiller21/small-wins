@@ -10,6 +10,7 @@ class CompletedDay < ActiveRecord::Base
 
   validates :date, :timeliness => {:on_or_before => lambda { Date.current }, :type => :date, :on_or_before_message => "is in the future"}
 
+  # For a completed day, returns date as [yyyy,mm,dd]
   def date_as_ymd_array
     [self.date.year,
         self.date.month,
