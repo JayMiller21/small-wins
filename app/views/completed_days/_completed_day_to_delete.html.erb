@@ -1,0 +1,11 @@
+<tr>
+  <td><%= completed_day_to_delete.date %></td>
+  <td><%= link_to 'Delete', user_habit_completed_day_path(current_user,habit_id = params[:id],completed_day_id = completed_day_to_delete.id),
+          method: :delete,
+          data: { confirm: 'Are you sure?' },
+          class: "btn btn-default btn-xs",
+          role: "button" %></td>
+</tr>
+
+
+

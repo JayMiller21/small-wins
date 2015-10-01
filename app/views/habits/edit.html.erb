@@ -10,16 +10,7 @@
       <tr>
         <th colspan="2">Completed Days</th>
       </tr>
-      <% @habit.completed_days_sorted.each do |completed_day| %>
-        <tr>
-          <td><%= completed_day.date %></td>
-          <td><%= link_to 'Delete', '/completed_days/completed_day.id',
-                  method: :delete,
-                  data: { confirm: 'Are you sure?' },
-                  class: "btn btn-default btn-xs",
-                  role: "button" %></td>
-        </tr>
-      <% end %>
+      <%= render partial: "/completed_days/completed_day_to_delete", collection: @completed_days %>
     </table>
 
     <div>

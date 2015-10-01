@@ -14,7 +14,9 @@ class HabitsController < ApplicationController
   def edit
     habit
     completed_days
+    # byebug
     @completed_day = CompletedDay.new
+
   end
 
   def create
@@ -43,6 +45,15 @@ class HabitsController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def destroy_completed_day
+    # byebug
+    habit
+    completed_days
+    @completed_day = CompletedDay.find(params[:id])
+    @completed_day.destroy
+    redirect_to edit_user_habit_path(current_user,habit)
   end
 
   private

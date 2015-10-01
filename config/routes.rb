@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       member do
         post 'create_completed_day'
       end
+      resources :completed_days, only: [:destroy]
     end
   end
   resources :completed_days 
