@@ -1,9 +1,9 @@
 == Small Wins
 
 === About
-Small Wins is an app designed to help you build good habits into your life one small step at a time.
+Small Wins is an app designed to help you build good habits into your life one small step at a time. Log in, add habits, log days, and watch your chains grow!
 
 It's built in Rails version 4.1.1 with a PostgreSQL database.
 
 === Visit
-Visit Small Wins at small-wins.herokuapp.com
+Visit Small Wins at {small-wins.herokuapp.com}[small-wins.herokuapp.com]
