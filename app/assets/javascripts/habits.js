@@ -15,7 +15,7 @@ ready = function() {
 
   function drawChart(habit) {
     var container = document.getElementById(habit[0].replace(/\s+/g,"-") + '-timeline');
-    var chart = new google.visualization.ColumnChart(container);
+    var chart = new google.visualization.Calendar(container);
 
     var d = new Date();
 
@@ -28,19 +28,7 @@ ready = function() {
     }));
 
     var options = {
-    hAxis: {
-      viewWindow:{
-        max: new Date(d.getFullYear(),d.getMonth()+1,1),
-        min: new Date(d.getFullYear(),d.getMonth(),0)
-      },
-      gridlines: {color: "whitesmoke"}
-    },
-    vAxis: {
-      gridlines: {count: 0}
-    },
-    legend: {position: "none"},
-    backgroundColor: {fill: "whitesmoke"},
-    bar: {groupWidth: "21"}
+      height: 350
     };
     
     chart.draw(data,options);
