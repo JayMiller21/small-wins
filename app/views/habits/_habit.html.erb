@@ -5,11 +5,23 @@
   <div class="panel-body">
 
   <% if !habit.chains[0].nil? %>
-    <h4>Your <%= habit.name.downcase %> chain is <%= habit.latest_chain_length %> days long!</h4>
     <div id=<%= habit.name.gsub(/\s/,"-") + "-timeline" %> style="height: 160px;"></div>  
   <% else %>
     <h4><%= @no_chains_message %></h4>
   <% end %>
 
   </div>
+
+  <table class="table table-bordered">
+    <tr>
+      <td>Days This Calendar Year</td>
+      <td>Longest Streak</td>
+      <td>
+        Current Streak</br>
+        <span style="font-weight: bold; font-size: 200%">
+        <%= habit.latest_chain_length %> days</span>
+      </td>
+    </tr>
+  </table>
+
 </div>
