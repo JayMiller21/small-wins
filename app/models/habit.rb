@@ -40,6 +40,20 @@ class Habit < ActiveRecord::Base
     end
   end
 
+  # For a given habit, returns the longest chain, meaning the one with the most days.
+  def longest_chain
+    latest_chain = self.chains.max_by {|chain| chain[:end_date] - chain[:start_date]} 
+  end
+
+  # For a given habit, returns the number of days in the longest chain.
+  def longest_chain_length
+    if longest_chain.nil?
+      0
+    else
+      (self.longest_chain[:end_date] - self.longest_chain[:start_date]).to_i + 1
+    end
+  end
+
   # For a given habit, returns habit data in the format needed for sending to javascript column chart.
   def formatted_for_column_chart
       [self.name,self.completed_days.map { |cd| cd.date_as_ymd_array}]
