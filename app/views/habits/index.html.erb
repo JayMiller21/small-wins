@@ -15,19 +15,18 @@
 
 <% end %>
 
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h2 class="panel-title">My Habits</h2>
-  </div>
-  <div class="panel-body">
 
-    <div>
-      <% if !@habits[0].nil? %>
-        <%= render partial: "habit", collection: @habits %>
-      <% else %>
+<div>
+  <% if !@habits[0].nil? %>
+    <%= render partial: "habit", collection: @habits %>
+  <% else %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h2 class="panel-title">My Habits</h2>
+      </div>
+      <div class="panel-body">
         <h4><%= @no_habits_message %></h4>
-      <% end %>
+      </div>
     </div>
-
-  </div>
+  <% end %>
 </div>
