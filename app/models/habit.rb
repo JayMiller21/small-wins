@@ -54,6 +54,13 @@ class Habit < ActiveRecord::Base
     end
   end
 
+  #
+  def days_this_year
+    self.completed_days.to_a.keep_if { |day|
+      day.date.year == Time.now.year
+    }.length
+  end
+
   # For a given habit, returns habit data in the format needed for sending to javascript column chart.
   def formatted_for_column_chart
       [self.name,self.completed_days.map { |cd| cd.date_as_ymd_array}]
