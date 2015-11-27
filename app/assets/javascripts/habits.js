@@ -28,7 +28,7 @@ ready = function() {
     }));
 
     var options = {
-      height: 350
+      height: 170
     };
     
     chart.draw(data,options);
