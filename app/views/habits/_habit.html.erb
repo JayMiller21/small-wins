@@ -1,15 +1,13 @@
 <div class="panel panel-default">
+  
   <div class="panel-heading">
     <h3 class="panel-title"><%= link_to habit.name, edit_user_habit_path(current_user,habit.id) %></h3>
   </div>
-  <div class="panel-body">
 
   <% if !habit.chains[0].nil? %>
+  
+  <div class="panel-body">
     <div id=<%= habit.name.gsub(/\s/,"-") + "-timeline" %> style="height: 160px;"></div>  
-  <% else %>
-    <h4><%= @no_chains_message %></h4>
-  <% end %>
-
   </div>
 
   <table class="table table-bordered">
@@ -32,4 +30,12 @@
     </tr>
   </table>
 
+  <% else %>
+  
+  <div class="panel-body">
+    <h4><%= @no_chains_message %></h4>
+  </div>
+
+  <% end %>
+  
 </div>
