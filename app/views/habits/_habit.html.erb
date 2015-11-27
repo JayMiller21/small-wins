@@ -1,4 +1,4 @@
-<div class="panel panel-default">
+<div class="panel panel-default" style="width:950px; margin-left:auto; margin-right:auto">
   
   <div class="panel-heading">
     <h3 class="panel-title"><%= link_to habit.name, edit_user_habit_path(current_user,habit.id) %></h3>
@@ -11,18 +11,18 @@
   </div>
 
   <table class="table table-bordered">
-    <tr>
-      <td>
+    <tr style="width:100%">
+      <td style="width:33.3%; text-align:center">
         Days This Calendar Year</br>
         <span style="font-weight: bold; font-size: 200%">
         <%= habit.days_this_year %> days</span>
       </td>
-      <td>
+      <td style="width:33.3%; text-align:center">
         Longest Streak</br>
         <span style="font-weight: bold; font-size: 200%">
         <%= habit.longest_chain_length %> days</span>
       </td>
-      <td>
+      <td style="width:33.3%; text-align:center">
         Current Streak</br>
         <span style="font-weight: bold; font-size: 200%">
         <%= habit.latest_chain_length %> days</span>
@@ -37,5 +37,5 @@
   </div>
 
   <% end %>
-  
+
 </div>
